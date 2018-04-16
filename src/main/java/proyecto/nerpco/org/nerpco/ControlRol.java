@@ -71,6 +71,13 @@ public class ControlRol {
         return new Estatus(true, "Borrado exitoso");
     }
 */
+
+    //Buscar todos los ROLES
+    @CrossOrigin
+    @RequestMapping(value = {"/"}, method = RequestMethod.GET, headers = {"Accept=application/json"})
+    public ArrayList<Roles> buscarTodos(){
+        return (ArrayList<Roles>)repoRol.findAll();
+    }
     //Metodo JSON para guardar
     @CrossOrigin
     @RequestMapping(value = {"/"},method = RequestMethod.POST, headers = {"Accept=application/json"})
@@ -96,4 +103,6 @@ public class ControlRol {
         repoRol.save(roles);
         return new Estatus(true,"Actualizado con exito");
     }
+
+
 }
