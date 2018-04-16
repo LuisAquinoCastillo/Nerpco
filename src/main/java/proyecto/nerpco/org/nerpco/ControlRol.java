@@ -100,7 +100,7 @@ public class ControlRol {
 
     //Metodo JSON para buscar por ID
     @CrossOrigin
-    @RequestMapping(value = {"/"}, method = RequestMethod.GET, headers = {"Accept=application/json"})
+    @RequestMapping(value = {"/id"}, method = RequestMethod.GET, headers = {"Accept=application/json"})
     public Optional<Roles> buscarIdJSON(@RequestBody String json)throws Exception{
         ObjectMapper mapper=new ObjectMapper();
         Roles roles=mapper.readValue(json,Roles.class);
@@ -120,6 +120,13 @@ public class ControlRol {
 
         repoRol.delete(roles);
         return new Estatus(true,"Borrado con exito");
+    }
+
+    //Buscar todos
+    @CrossOrigin
+    @RequestMapping(value = {"/todos"}, method = RequestMethod.GET, headers = {"Accept=application/json"})
+    public ArrayList<Roles> buscarTodos()throws Exception{
+        return (ArrayList<Roles>)repoRol.findAll();
     }
 
 }
