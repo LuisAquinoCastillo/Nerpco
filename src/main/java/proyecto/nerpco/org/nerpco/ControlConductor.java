@@ -68,6 +68,12 @@ public class ControlConductor {
         return new Estatus(true, "Borrado exitoso");
     }*/
 
+    @CrossOrigin
+    @RequestMapping(value = {"/"}, method = RequestMethod.GET, headers = {"Accept=application/json"})
+    public ArrayList<Conductor> buscarTodos(){
+        return (ArrayList<Conductor>)repoConduc.findAll();
+    }
+
     //Metodo JSON para guardar desde la pagina web
     @CrossOrigin
     @RequestMapping(value = {"/"}, method = RequestMethod.POST, headers = {"Accept=application/json"})
