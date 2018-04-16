@@ -74,7 +74,7 @@ public class ControlRol {
 
     //Metodo JSON para guardar
     @CrossOrigin
-    @RequestMapping(value = {"/"},method = RequestMethod.POST, headers = {"Accept=application/json"})
+    @RequestMapping(value = {"/guardar"},method = RequestMethod.POST, headers = {"Accept=application/json"})
     public Estatus guardarJSON(@RequestBody String json)throws Exception{
 
         ObjectMapper mapper=new ObjectMapper();
