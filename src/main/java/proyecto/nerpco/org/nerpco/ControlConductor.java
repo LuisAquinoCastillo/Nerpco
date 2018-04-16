@@ -15,6 +15,7 @@ public class ControlConductor {
     @Autowired
     RepositorioConductor repoConduc;
 
+    /*
     @CrossOrigin
     @RequestMapping(value = {"/"}, method = RequestMethod.GET, headers = {"Accept=application/json"})
     public ArrayList<Conductor> buscarTodos(){
@@ -65,7 +66,7 @@ public class ControlConductor {
             return new Estatus(false,"Error: "+e);
         }
         return new Estatus(true, "Borrado exitoso");
-    }
+    }*/
 
     //Metodo JSON para guardar desde la pagina web
     @CrossOrigin

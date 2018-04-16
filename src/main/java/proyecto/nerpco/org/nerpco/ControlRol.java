@@ -14,7 +14,7 @@ public class ControlRol {
 
     @Autowired
     RepositorioRoles repoRol;
-
+/*
     //Buscar todos los ROLES
     @CrossOrigin
     @RequestMapping(value = {"/"}, method = RequestMethod.GET, headers = {"Accept=application/json"})
@@ -70,7 +70,7 @@ public class ControlRol {
         }
         return new Estatus(true, "Borrado exitoso");
     }
-
+*/
     //Metodo JSON para guardar
     @CrossOrigin
     @RequestMapping(value = {"/"},method = RequestMethod.POST, headers = {"Accept=application/json"})
