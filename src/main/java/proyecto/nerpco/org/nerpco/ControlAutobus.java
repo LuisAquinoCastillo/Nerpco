@@ -106,15 +106,4 @@ public class ControlAutobus {
         return repoABus.findById(autobus.getIdAutobus());
     }
 
-    //Borrar
-    @CrossOrigin
-    @RequestMapping(value = {"/borrar"}, method = RequestMethod.DELETE, headers = {"Accept=application/json"})
-    public Estatus borrarJSON(@RequestBody String json)throws Exception{
-
-        ObjectMapper mapper=new ObjectMapper();
-        Autobus autobus=mapper.readValue(json,Autobus.class);
-
-        repoABus.deleteById(autobus.getIdAutobus());
-        return new Estatus(true,"Borrado con exito");
-    }
 }
