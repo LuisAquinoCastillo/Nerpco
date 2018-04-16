@@ -104,4 +104,17 @@ public class ControlConductor {
 
         return repoConduc.findById(conductor.getIdAutobus());
     }
+
+    //Metofo JSON para poder borrar un registro
+    @CrossOrigin
+    @RequestMapping(value = {"/borrar"},method = RequestMethod.DELETE, headers = {"Accept=application/json"})
+    public Estatus borrarJSON(@RequestBody String json)throws Exception{
+        ObjectMapper mapper=new ObjectMapper();
+        Conductor conductor=mapper.readValue(json,Conductor.class);
+
+        repoConduc.findById(conductor.getIdAutobus());
+
+        repoConduc.delete(conductor);
+        return new Estatus(true,"Borrado con exito");
+    }
 }

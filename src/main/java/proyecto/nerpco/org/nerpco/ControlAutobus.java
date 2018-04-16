@@ -114,13 +114,9 @@ public class ControlAutobus {
         ObjectMapper mapper=new ObjectMapper();
         Autobus autobus=mapper.readValue(json,Autobus.class);
 
-        try {
-            repoABus.findById(autobus.getIdAutobus());
+        repoABus.findById(autobus.getIdAutobus());
+        repoABus.delete(autobus);
 
-            repoABus.delete(autobus);
-        }catch (Exception e){
-            return new Estatus(false,"Error: "+e);
-        }
         return new Estatus(true,"Borrado con exito");
     }
 
