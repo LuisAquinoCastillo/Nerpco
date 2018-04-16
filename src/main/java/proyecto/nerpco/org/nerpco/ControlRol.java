@@ -98,5 +98,28 @@ public class ControlRol {
         return new Estatus(true,"Actualizado con exito");
     }
 
+    //Metodo JSON para buscar por ID
+    @CrossOrigin
+    @RequestMapping(value = {"/"}, method = RequestMethod.GET, headers = {"Accept=application/json"})
+    public Optional<Roles> buscarIdJSON(@RequestBody String json)throws Exception{
+        ObjectMapper mapper=new ObjectMapper();
+        Roles roles=mapper.readValue(json,Roles.class);
+
+        return repoRol.findById(roles.getIdRol());
+    }
+
+    //Metodo JSON para borrar registro
+    @CrossOrigin
+    @RequestMapping(value = {"/"}, method = RequestMethod.DELETE, headers = {"Accept=application/json"})
+    public Estatus borrarJSON(@RequestBody String json)throws Exception{
+
+        ObjectMapper mapper=new ObjectMapper();
+        Roles roles=mapper.readValue(json,Roles.class);
+
+        repoRol.findById(roles.getIdRol());
+
+        repoRol.delete(roles);
+        return new Estatus(true,"Borrado con exito");
+    }
 
 }
