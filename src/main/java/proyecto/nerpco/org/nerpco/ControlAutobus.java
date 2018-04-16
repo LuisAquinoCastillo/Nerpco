@@ -69,12 +69,6 @@ public class ControlAutobus {
     }
 */
 
-    @CrossOrigin
-    @RequestMapping(value = {"/"}, method = RequestMethod.GET, headers = {"Accept=application/json"})
-    public ArrayList<Autobus> buscarTodos(){
-        return (ArrayList<Autobus>)repoABus.findAll();
-    }
-
     //Guardar
     @CrossOrigin
     @RequestMapping(value = {"/"}, method = RequestMethod.POST, headers = {"Accept=application/json"})

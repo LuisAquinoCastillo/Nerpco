@@ -72,12 +72,6 @@ public class ControlRol {
     }
 */
 
-    //Buscar todos los ROLES
-    @CrossOrigin
-    @RequestMapping(value = {"/"}, method = RequestMethod.GET, headers = {"Accept=application/json"})
-    public ArrayList<Roles> buscarTodos(){
-        return (ArrayList<Roles>)repoRol.findAll();
-    }
     //Metodo JSON para guardar
     @CrossOrigin
     @RequestMapping(value = {"/"},method = RequestMethod.POST, headers = {"Accept=application/json"})
