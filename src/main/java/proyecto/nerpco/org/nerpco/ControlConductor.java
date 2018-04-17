@@ -70,7 +70,7 @@ public class ControlConductor {
 
     //Metodo JSON para guardar desde la pagina web
     @CrossOrigin
-    @RequestMapping(value = {"/"}, method = RequestMethod.POST, headers = {"Accept=application/json"})
+    @RequestMapping(value = {"/guardar"}, method = RequestMethod.POST, headers = {"Accept=application/json"})
     public Estatus guardarJSON(@RequestBody String json)throws Exception{
 
         ObjectMapper mapper=new ObjectMapper();
@@ -82,7 +82,7 @@ public class ControlConductor {
 
     //Metodo JSON para actualizar desde la pagina web
     @CrossOrigin
-    @RequestMapping(value = {"/"}, method = RequestMethod.PUT, headers = {"Accept=application/json"})
+    @RequestMapping(value = {"/actualizar"}, method = RequestMethod.PUT, headers = {"Accept=application/json"})
     public Estatus actualizarJSON(@RequestBody String json)throws Exception{
 
         ObjectMapper mapper=new ObjectMapper();
@@ -96,7 +96,7 @@ public class ControlConductor {
 
     //Metodo JSON para poder buscar por ID
     @CrossOrigin
-    @RequestMapping(value = {"/"}, method = RequestMethod.GET, headers = {"Accept=application/json"})
+    @RequestMapping(value = {"/id"}, method = RequestMethod.GET, headers = {"Accept=application/json"})
     public Optional<Conductor> buscarIdJSON(@RequestBody String json)throws Exception{
 
         ObjectMapper mapper=new ObjectMapper();
@@ -116,5 +116,12 @@ public class ControlConductor {
 
         repoConduc.delete(conductor);
         return new Estatus(true,"Borrado con exito");
+    }
+
+    //Metodo JSON para encontrar todos los registros
+    @CrossOrigin
+    @RequestMapping(value = {"/todos"}, method = RequestMethod.GET, headers = {"Acept=application/json"})
+    public ArrayList<Conductor> buscarTodosJSON(){
+        return (ArrayList<Conductor>)repoConduc.findAll();
     }
 }

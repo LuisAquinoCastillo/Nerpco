@@ -86,7 +86,7 @@ public class ControlRol {
 
     //Metodo JSON para actualizar
     @CrossOrigin
-    @RequestMapping(value = {"/"}, method = RequestMethod.PUT, headers = {"Accept=application/json"})
+    @RequestMapping(value = {"/actualizar"}, method = RequestMethod.PUT, headers = {"Accept=application/json"})
     public Estatus actualizarJSON(@RequestBody String json)throws Exception{
 
         ObjectMapper mapper=new ObjectMapper();
@@ -110,7 +110,7 @@ public class ControlRol {
 
     //Metodo JSON para borrar registro
     @CrossOrigin
-    @RequestMapping(value = {"/"}, method = RequestMethod.DELETE, headers = {"Accept=application/json"})
+    @RequestMapping(value = {"/borrar"}, method = RequestMethod.DELETE, headers = {"Accept=application/json"})
     public Estatus borrarJSON(@RequestBody String json)throws Exception{
 
         ObjectMapper mapper=new ObjectMapper();
