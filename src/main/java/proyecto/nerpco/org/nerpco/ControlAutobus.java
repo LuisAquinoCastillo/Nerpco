@@ -71,7 +71,7 @@ public class ControlAutobus {
 
     //Guardar
     @CrossOrigin
-    @RequestMapping(value = {"/"}, method = RequestMethod.POST, headers = {"Accept=application/json"})
+    @RequestMapping(value = {"/guardar"}, method = RequestMethod.POST, headers = {"Accept=application/json"})
     public Estatus guardarJSON(@RequestBody String json)throws Exception{
 
         ObjectMapper mapper=new ObjectMapper();
@@ -84,7 +84,7 @@ public class ControlAutobus {
 
     //Actualizar
     @CrossOrigin
-    @RequestMapping(value = {"/"}, method = RequestMethod.PUT, headers = {"Accept=application/json"})
+    @RequestMapping(value = {"/actualizar"}, method = RequestMethod.PUT, headers = {"Accept=application/json"})
     public Estatus  actualizarJSON(@RequestBody String json)throws Exception{
 
         ObjectMapper mapper=new ObjectMapper();
@@ -98,7 +98,7 @@ public class ControlAutobus {
 
     //Buscar por ID
     @CrossOrigin
-    @RequestMapping(value = {"/"},method = RequestMethod.GET, headers = {"Accept=application/json"})
+    @RequestMapping(value = {"/id"},method = RequestMethod.GET, headers = {"Accept=application/json"})
     public Optional<Autobus> buscarIdJSON(@RequestBody String json)throws Exception{
 
         ObjectMapper mapper=new ObjectMapper();
@@ -118,6 +118,13 @@ public class ControlAutobus {
         repoABus.delete(autobus);
 
         return new Estatus(true,"Borrado con exito");
+    }
+
+    //buscar todos
+    @CrossOrigin
+    @RequestMapping(value = {"/todos"})
+    public ArrayList<Autobus> buscarTodosJSON(){
+        return (ArrayList<Autobus>)repoABus.findAll();
     }
 
 }
