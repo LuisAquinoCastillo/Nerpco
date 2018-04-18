@@ -79,8 +79,13 @@ public class ControlRol {
 
         ObjectMapper mapper=new ObjectMapper();
         Roles roles=mapper.readValue(json, Roles.class);
-
-        repoRol.save(roles);
+        try{
+            Integer id=Integer.parseInt(roles.getIdRol());
+            roles.setIdRol(id.toString());
+            repoRol.save(roles);
+        }catch(Exception e){
+            return new Estatus(false,"Error: "+e);
+        }
         return new Estatus(true,"Guardado con exito");
     }
 
@@ -91,10 +96,14 @@ public class ControlRol {
 
         ObjectMapper mapper=new ObjectMapper();
         Roles roles=mapper.readValue(json,Roles.class);
-
-        repoRol.findById(roles.getIdRol());
-
-        repoRol.save(roles);
+        try{
+            Integer id=Integer.parseInt(roles.getIdRol());
+            roles.setIdRol(id.toString());
+            repoRol.findById(roles.getIdRol());
+            repoRol.save(roles);
+        }catch(Exception e){
+            return new Estatus(false,"Error: "+e);
+        }
         return new Estatus(true,"Actualizado con exito");
     }
 
