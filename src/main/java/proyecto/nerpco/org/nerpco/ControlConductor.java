@@ -75,8 +75,14 @@ public class ControlConductor {
 
         ObjectMapper mapper=new ObjectMapper();
         Conductor conductor=mapper.readValue(json,Conductor.class);
+        try{
+            Integer id=Integer.parseInt(conductor.getIdConductor());
+            conductor.setIdConductor(id.toString());
+            repoConduc.save(conductor);
+        }catch (Exception e){
+            return new Estatus(false,"Error: "+e);
+        }
 
-        repoConduc.save(conductor);
         return new Estatus(true, "Guardado con exito");
     }
 
@@ -88,9 +94,14 @@ public class ControlConductor {
         ObjectMapper mapper=new ObjectMapper();
         Conductor conductor=mapper.readValue(json,Conductor.class);
 
-        repoConduc.findById(conductor.getIdAutobus());
-
-        repoConduc.save(conductor);
+        try{
+            Integer id=Integer.parseInt(conductor.getIdConductor());
+            conductor.setIdConductor(id.toString());
+            repoConduc.findById(conductor.getIdAutobus());
+            repoConduc.save(conductor);
+        }catch (Exception e){
+            return new Estatus(false,"Error: "+e);
+        }
         return new Estatus(true,"Guardado con exito");
     }
 

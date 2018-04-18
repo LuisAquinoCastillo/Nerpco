@@ -76,8 +76,13 @@ public class ControlAutobus {
 
         ObjectMapper mapper=new ObjectMapper();
         Autobus autobus=mapper.readValue(json,Autobus.class);
-
-        repoABus.save(autobus);
+        try{
+            Integer id=Integer.parseInt(autobus.getIdAutobus());
+            autobus.setIdAutobus(id.toString());
+            repoABus.save(autobus);
+        }catch (Exception e){
+            return  new Estatus(true,"Error: "+e);
+        }
         return new Estatus(true,"Guardado con exito");
 
     }
@@ -89,10 +94,14 @@ public class ControlAutobus {
 
         ObjectMapper mapper=new ObjectMapper();
         Autobus autobus=mapper.readValue(json,Autobus.class);
-
-        repoABus.findById(autobus.getIdAutobus());
-
-        repoABus.save(autobus);
+        try{
+            Integer id=Integer.parseInt(autobus.getIdAutobus());
+            autobus.setIdAutobus(id.toString());
+            repoABus.findById(autobus.getIdAutobus());
+            repoABus.save(autobus);
+        }catch (Exception e) {
+            return new Estatus(true, "Error: " + e);
+        }
         return new Estatus(true,"Actualizado con exito");
     }
 
