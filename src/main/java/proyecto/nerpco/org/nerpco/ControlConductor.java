@@ -120,7 +120,7 @@ public class ControlConductor {
 
     //Metodo JSON para encontrar todos los registros
     @CrossOrigin
-    @RequestMapping(value = {"/todos"}, method = RequestMethod.GET, headers = {"Acept=application/json"})
+    @RequestMapping(value = {"/todos"}, method = RequestMethod.GET, headers = {"Accept=application/json"})
     public ArrayList<Conductor> buscarTodosJSON(){
         return (ArrayList<Conductor>)repoConduc.findAll();
     }
