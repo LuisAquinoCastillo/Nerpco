@@ -22,8 +22,13 @@ public class ControlTerminal {
 
         ObjectMapper mapper=new ObjectMapper();
         Terminales terminal=mapper.readValue(json,Terminales.class);
-
-        repoTerm.save(terminal);
+        try{
+            Integer id=Integer.parseInt(terminal.getClaveTerminal());
+            terminal.setClaveTerminal(id.toString());
+            repoTerm.save(terminal);
+        }catch (Exception e){
+            return new Estatus(true,"Error: "+e);
+        }
         return new Estatus(true,"Terminal guardada con exito");
     }
 
@@ -34,10 +39,14 @@ public class ControlTerminal {
 
         ObjectMapper mapper=new ObjectMapper();
         Terminales terminales=mapper.readValue(json,Terminales.class);
-
+    try{
+        Integer id=Integer.parseInt(terminales.getClaveTerminal());
+        terminales.setClaveTerminal(id.toString());
         repoTerm.findById(terminales.getClaveTerminal());
-
         repoTerm.save(terminales);
+    }catch (Exception e){
+        return new Estatus(false,"Error: "+e);
+    }
         return new Estatus(true,"Terminal actualizada");
     }
 
